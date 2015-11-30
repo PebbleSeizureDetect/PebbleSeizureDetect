@@ -1,8 +1,8 @@
 <h2>PEBBLE SEIZURE DETECT</h2>
 
-"Pebble Seizure Detect" is an open-source piece of software designed to aid people who experience tonic-clonic seizures.  It attempts to detect rhythmic motions of the Pebble watch in the frequency range typically seen during tonic-clonic seizures.  If a potential seizure is detected, the app will automatically send text messages to the phone numbers you specified during setup.  The text messages include a link to a Google Map showing the wearer's last known GPS location.  For a full list of features, read on, below.
+"Pebble Seizure Detect" is an open-source piece of software designed to aid people who experience tonic-clonic seizures.  It attempts to detect rhythmic motions of the Pebble watch in the frequency range typically seen during tonic-clonic seizures.  If a potential seizure is detected, the app will automatically send text messages to the phone numbers you specify during setup.  The text messages include a link to a Google Map showing the wearer's last known GPS location.  For a full list of features, read on, below.
 
-My name is Ryan Clark, and I am an independent game developer.  My wife has epilepsy and an unexpected tonic-clonic seizure in 2014 prompted me to create "Pebble Seizure Detect".  She has been using the app successfully for a year now, so we've decided to release it as open source software in the hopes that it will help you as much as it has helped our family.
+My name is Ryan Clark, and I am an independent game developer.  My wife has epilepsy and an unexpected tonic-clonic seizure in 2014 prompted me to create "Pebble Seizure Detect".  She has been using the app successfully for a year now, so we've decided to release it as open source software in the hope that it will help you as much as it has helped our family.
 
 
 <h4>FEATURES</h4>
@@ -56,7 +56,7 @@ The legalese version: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY 
 
 <h4>INSTRUCTIONS</h4>
 
-So how do you get it working?  If you have read the list of potential flaws and the disclaimer above, and you possess all of the listed requirements, you can get "Pebble Seizure Detect" working on your Pebble by following the steps below.  And don't worry, no knowledge of programming or code is needed to do this!  Just follow these steps carefully:
+So how do you get it working?  If you have read the list of potential issues, you agree to the disclaimer above, and you possess all of the listed requirements, you can get "Pebble Seizure Detect" working on your Pebble by following the steps below.  And don't worry, no knowledge of programming or code is needed to do this!  Just follow these steps carefully:
 
 1.  Get a Twilio account:
 
@@ -96,7 +96,7 @@ So how do you get it working?  If you have read the list of potential flaws and 
 		
 	And modify it with your phone number to become something like:
   
-		<pre>messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B16045551234%22&To=%22%2B1" + phoneNumber + "%22";</pre>
+		messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B16045551234%22&To=%22%2B1" + phoneNumber + "%22";
 
 	- NOTE: If you are not in the USA or Canada, ignore the previous two steps and follow these instead:
 	  - Take the phone number from your Twilio account page and remove everything but the numbers, but KEEP your country code.  For example +44 7700 900031 would become 447700900031
@@ -106,7 +106,7 @@ So how do you get it working?  If you have read the list of potential flaws and 
 		
 		And modify it with your phone number to become something like:
 
-			<pre>messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B447700900031%22&To=%22%2B1" + phoneNumber + "%22";</pre>
+			messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B447700900031%22&To=%22%2B1" + phoneNumber + "%22";
 
 5. Edit the source code to make it work properly with your Twilio account's ID and auth token:
 	
@@ -122,7 +122,7 @@ So how do you get it working?  If you have read the list of potential flaws and 
 	
 	- Copy that value, and in the "phone.js" source code file, find the text "[AccountSID:PrimaryAuthToken, Base64 encoded]", and paste it to replace.
 	
-6. Edit the source code to include the wearer's name, and relevant phone numbers.
+6. Edit the source code to include the wearer's name, and relevant phone numbers:
 	
 	- In the "phone.js" source code file, find the text "NAME" (in all capital letters).  Replace "NAME" with the first name (no spaces) of the wearer.  "NAME" appears multiple times in the source code, so be sure to replace all instances of it, but only replace "NAME" if it is in all capital letters.  Ignore lower case "name".
 	- In the "phone.js" source code file, find the two instances of the text "6045551234" and replace both instances with the phone number you would like to have notified if a seizure is detected or if the panic button is pressed.
@@ -131,14 +131,14 @@ So how do you get it working?  If you have read the list of potential flaws and 
 	 <pre>// Panic message?
 	if (e.payload["0"] == 1)
 	{
-		send_text_message("Ryan+pushed+the+panic+button", "6045551234");
-		send_text_message("Ryan+pushed+the+panic+button", "7785556789");
+	&nbsp;&nbsp;&nbsp;&nbsp;send_text_message("Ryan+pushed+the+panic+button", "6045551234");
+	&nbsp;&nbsp;&nbsp;&nbsp;send_text_message("Ryan+pushed+the+panic+button", "7785556789");
 	}
 	// Seizure message?
 	else if (e.payload["0"] == 2)
 	{
-		send_text_message("Ryan+may+have+had+a+seizure", "6045551234");
-		send_text_message("Ryan+may+have+had+a+seizure", "7785556789");
+	&nbsp;&nbsp;&nbsp;&nbsp;send_text_message("Ryan+may+have+had+a+seizure", "6045551234");
+	&nbsp;&nbsp;&nbsp;&nbsp;send_text_message("Ryan+may+have+had+a+seizure", "7785556789");
 	}</pre>
 	
 	The above source code would send two messages on a detected seizure or panic.  One message would be sent to the phone number 6045551234 and one message would be sent to the phone number 7785556789.
