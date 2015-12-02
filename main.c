@@ -12,6 +12,8 @@
 //
 //    A copy of the GNU General Public License can be found at http://www.gnu.org/licenses/
 
+[REMOVE THIS]
+
 #include <pebble.h>
 
 #define SEIZURE_MESSAGE_DELAY_SECONDS 15
