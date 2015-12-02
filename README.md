@@ -88,6 +88,7 @@ So how do you get it working?  If you have read the list of potential issues, yo
 
 4. Edit the source code to make it work properly for your Twilio account's new phone number:
 
+	- In the "main.c" source code file, find the text "[REMOVE THIS]" and delete it
 	- To find the new phone number that comes with your Twilio account, go to this page: https://www.twilio.com/user/account/phone-numbers/incoming
 	- Take that phone number and remove everything but the numbers.  Also, do not include the "1".  You should end up with something like this if you are in the USA or Canada: 6045551234
 	- In the "phone.js" source code file, find the text "[YOUR TWILIO PHONE NUMBER]" and replace it with your Twilio number.  For example, find this line:
@@ -151,7 +152,10 @@ So how do you get it working?  If you have read the list of potential issues, yo
 
 8. Compile, install, and run "Pebble Seizure Detect":
 
-	- Go back to your CloudPebble project and click the "COMPILATION" link on the left-hand side
+	- Go back to your CloudPebble project
+	- In the "main.c" source code file, click the "Save" icon on the right hand side
+	- In the "phone.js" source code file, click the "Save" icon on the right hand side
+	- Click the "COMPILATION" link on the left-hand side
 	- Click the "Run Build" button, and hopefully you'll eventually see the word "SUCCEEDED" in the status column.
 	- Click the "Phone" tab at the top of the screen
 	- With your phone on and the Pebble app running (and the developer connection enabled, as described in step 7 above), click the "INSTALL AND RUN" button on CloudPebble.  The app should be installed on your phone and it should eventually start up on your watch!
