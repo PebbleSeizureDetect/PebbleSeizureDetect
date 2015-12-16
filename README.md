@@ -46,14 +46,6 @@ And lastly, there could be flaws in the design of the app, or bugs in the code i
 
 Despite this list of potential issues, we have been using the app for over a year and it has performed very well for us.  We hope that it does the same for you.
 
-
-<h4>DISCLAIMER</h4>
-
-The short version: I am not some big corporation, and I am releasing this software for free.  Please don't sue me if it doesn't work :)  I've done my best to make it work well, but there certainly will be flaws.
-
-The legalese version: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
 <h4>INSTRUCTIONS</h4>
 
 So how do you get it working?  If you have read the list of potential issues, you agree to the disclaimer above, and you possess all of the listed requirements, you can get "Pebble Seizure Detect" working on your Pebble by following the steps below.  And don't worry, no knowledge of programming or code is needed to do this!  Just follow these steps carefully:
@@ -94,9 +86,9 @@ So how do you get it working?  If you have read the list of potential issues, yo
 	- In the "phone.js" source code file, find the text "[YOUR TWILIO PHONE NUMBER]" and replace it with your Twilio number.  For example, find this line:
 
     <pre>messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B1[YOUR TWILIO PHONE NUMBER]%22&To=%22%2B1" + phoneNumber + "%22";</pre>
-		
+
 	And modify it with your phone number to become something like:
-  
+
 		messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B16045551234%22&To=%22%2B1" + phoneNumber + "%22";
 
 	- NOTE: If you are not in the USA or Canada, ignore the previous two steps and follow these instead:
@@ -104,31 +96,31 @@ So how do you get it working?  If you have read the list of potential issues, yo
 	  - In the "phone.js" source code file, find the text "1[YOUR TWILIO PHONE NUMBER]" (note that we are including the "1" here!) and replace it with your Twilio number.  For example, find this line:
 
 			<pre>messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B1[YOUR TWILIO PHONE NUMBER]%22&To=%22%2B1" + phoneNumber + "%22";</pre>
-		
+
 		And modify it with your phone number to become something like:
 
 			messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B447700900031%22&To=%22%2B1" + phoneNumber + "%22";
 
 5. Edit the source code to make it work properly with your Twilio account's ID and auth token:
-	
+
 	- Log in to your Twilio account and go to the Account details page to find your AccountSID and AuthToken's Primary Token.  (To view the "Primary Token" you may have to click on the little lock icon below it.)
 	- In the "phone.js" source code file, find the text "[YOUR_AccountSID]" and replace it with whatever your AccountSID is
 	- Next, go to this URL: https://www.base64encode.org/ and in the top box, enter your AccountSID, then a colon, then your AuthToken's Primary Token.  It should look something like this:
-	
+
 		AC008a1d58ca2491c8b1da25ef5d33337a:bafee59f98f1bf63d3fafed24df17ba5
-	
+
 	- Click "Encode" to encode it as UTF-8.  The result in the bottom box should look something like this:
-	
+
 		QUMwMDhhMWQ1OGNhMjQ5MWM4YjFkYTI1ZWY1ZDMzMzM3YTpiYWZlZTU5Zjk4ZjFiZjYzZDNmYWZlZDI0ZGYxN2JhNQ==
-	
+
 	- Copy that value, and in the "phone.js" source code file, find the text "[AccountSID:PrimaryAuthToken, Base64 encoded]", and paste it to replace.
-	
+
 6. Edit the source code to include the wearer's name, and relevant phone numbers:
-	
+
 	- In the "phone.js" source code file, find the text "NAME" (in all capital letters).  Replace "NAME" with the first name (no spaces) of the wearer.  "NAME" appears multiple times in the source code, so be sure to replace all instances of it, but only replace "NAME" if it is in all capital letters.  Ignore lower case "name".
 	- In the "phone.js" source code file, find the two instances of the text "6045551234" and replace both instances with the phone number you would like to have notified if a seizure is detected or if the panic button is pressed.
 	- If you would like more than one number to be notified, copy the entire line of code containing the phone number and paste it again in the next line, and edit the phone number in the newly pasted line.  Be sure to do this for both the "Panic message" section and the "Seizure message" section.  If you do decide to add two phone numbers, that section of the source code should look something like this:
-	
+
 	 <pre>// Panic message?
 	if (e.payload["0"] == 1)
 	{
@@ -141,9 +133,9 @@ So how do you get it working?  If you have read the list of potential issues, yo
 	&nbsp;&nbsp;&nbsp;&nbsp;send_text_message("Ryan+may+have+had+a+seizure", "6045551234");
 	&nbsp;&nbsp;&nbsp;&nbsp;send_text_message("Ryan+may+have+had+a+seizure", "7785556789");
 	}</pre>
-	
+
 	The above source code would send two messages on a detected seizure or panic.  One message would be sent to the phone number 6045551234 and one message would be sent to the phone number 7785556789.
-	
+
 7. Install the Pebble app on your iPhone:
 
 	- On your iPhone, visit this page and install the Pebble app: https://itunes.apple.com/ca/app/pebble-smartwatch/id592012721?mt=8
@@ -164,7 +156,7 @@ So how do you get it working?  If you have read the list of potential issues, yo
 
 	- To ensure that the app is working correctly, use the up and down buttons on your Pebble to select the "PANIC" menu item and then push the middle button.  Then push the middle button 3 times in quick succession to send a panic message.  Check to make sure that the phone numbers you have added to the source code did indeed receive a text message!  And ensure that the message includes a clickable link to a Google Map that accurately represents your location.
 	- You may also wish to simulate a seizure by making a strong "toothbrushing" type of motion with the watch, for 30 to 60 seconds.  It should indicate that a seizure has been detected.  You should practice disabling a detected seizure (so that you know how to disable it during a false positive) and you should also allow it to actually send the seizure detection message and ensure that the relevant phone numbers do indeed receive a text message with your Google Maps location link.
-	
+
 
 <h4>OPTIONAL INSTRUCTIONS FOR PERSISTENT LOCATION TRACKING</h4>
 
