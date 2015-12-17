@@ -12,7 +12,7 @@
 //
 //    A copy of the GNU General Public License can be found at http://www.gnu.org/licenses/
 
-var locationOptions = { "timeout": 30000, "maximumAge": 60000, "enableHighAccuracy": true }; 
+var locationOptions = { "timeout": 30000, "maximumAge": 60000, "enableHighAccuracy": true };
 var lastLatitude = 0;
 var lastLongitude = 0;
 
@@ -22,7 +22,7 @@ function locationSuccess(pos)
 	console.log("Coordinates!:");
 	console.log(coordinates.latitude);
 	console.log(coordinates.longitude);
-	
+
 	lastLatitude = coordinates.latitude;
 	lastLongitude = coordinates.longitude;
 }
@@ -35,8 +35,8 @@ function locationError(err)
 
 function send_text_message(messageBody, phoneNumber)
 {
-	messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B1[YOUR TWILIO PHONE NUMBER]%22&To=%22%2B1" + phoneNumber + "%22";
-	
+	messageBody = "Body=" + messageBody + "+at+location:+https://www.google.co.uk/maps?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B1[YOUR TWILIO PHONE NUMBER]%22&To=%22%2B1" + phoneNumber + "%22";
+
 	var req = new XMLHttpRequest();
 	req.open("POST", "https://api.twilio.com/2010-04-01/Accounts/[YOUR_AccountSID]/SMS/Messages.json", true);
 	req.setRequestHeader("Authorization", "Basic [AccountSID:PrimaryAuthToken, Base64 encoded]");
@@ -98,7 +98,7 @@ Pebble.addEventListener("appmessage", function(e)
 	console.log('Phone received message: ' + e.payload["0"]);
 	force_location_update();
 	navigator.geolocation.getCurrentPosition(locationSuccess, locationError, locationOptions);
-	
+
 	// Panic message?
 	if (e.payload["0"] == 1)
 	{

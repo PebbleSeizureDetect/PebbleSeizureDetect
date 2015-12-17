@@ -1,14 +1,28 @@
-<h2>PEBBLE SEIZURE DETECT</h2>
+## PEBBLE SEIZURE DETECT
 
 "Pebble Seizure Detect" is an open-source piece of software designed to aid people who experience tonic-clonic seizures.  It attempts to detect rhythmic motions of the Pebble watch in the frequency range typically seen during tonic-clonic seizures.  If a potential seizure is detected, the app will automatically send text messages to the phone numbers you specify during setup.  The text messages include a link to a Google Map showing the wearer's last known GPS location.  For a full list of features, read on, below.
 
 My name is Ryan Clark, and I am an independent game developer.  My wife has epilepsy and an unexpected tonic-clonic seizure in 2014 prompted me to create "Pebble Seizure Detect".  She has been using the app successfully for a year now, so we've decided to release it as open source software in the hope that it will help you as much as it has helped our family.
 
+#### Disclaimer of Warranty
 
-<h4>FEATURES</h4>
+The code provided is released with the [GPL v3.0 license](choosealicense.com/licenses/gpl-3.0/) of which section 15 is important:
 
-- Detection of tonic-clonic motions using a Butterworth bandpass filter
-- If a potential seizure is detected, text messages are sent to any number of phone numbers that you specify.  Messages are sent via an inexpensive third party web service called Twilio.
+>  15 Disclaimer of Warranty.
+>
+>  THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+> APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+> HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+> OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+> THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+> PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+> IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+> ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+#### Features
+
+- Detection of tonic-clonic motions using a [Butterworth bandpass filter](https://en.wikipedia.org/wiki/Butterworth_filter)
+- If a potential seizure is detected, text messages are sent to any number of phone numbers that you specify.  Messages are sent via an inexpensive third party web service called [Twilio](https://www.twilio.com/).
 - Text messages include the most recent GPS coordinates of the wearer (updated every minute) in the form of a Google Maps link
 - There is a 15 second delay during which a detected seizure can be canceled, in case the app detected a seizure when there was none.
 - There is an option to temporarily disable seizure detection, if the wearer intends to engage in a behaviour that may generate motions similar to those seen during a tonic-clonic seizure (brushing teeth, for example)
@@ -16,7 +30,7 @@ My name is Ryan Clark, and I am an independent game developer.  My wife has epil
 - There is an option to transmit the wearer's location to a web server every minute, so that their whereabouts can be tracked by others, even without the detection of a seizure
 
 
-<h4>REQUIREMENTS</h4>
+#### Requirements
 
 - Any Pebble watch (the original version will do, and it can generally be purchased for under $100)
 - An Apple iPhone with enabled Bluetooth and location services.  ("Pebble Seizure Detect" should also work on an Android device, but it has not yet been tested on one.)
@@ -24,7 +38,7 @@ My name is Ryan Clark, and I am an independent game developer.  My wife has epil
 - A webserver, if you wish to track the wearer's position even if a seizure has not been detected
 
 
-<h4>POTENTIAL ISSUES</h4>
+#### Potential Issues
 
 This application will definitely generate "false positives" -- that is, it will often think that it has detected a seizure when in fact no seizure has occurred.  Strong motions that are similar to the motions of a tonic-clonic seizure may trigger a false positive.  Brushing teeth will often generate a false positive, for example.  To reduce the likelihood of this occurring, we suggest wearing your Pebble on your non-dominant hand.  Also, if you know that you are about to do something that may trigger a false positive, you can make use of the "TEMP DISABLE" feature.  Or, if you like, you can alter the app's source code to reduce the sensitivity level, though be aware that doing so will also decrease the likelihood that the app will detect a real seizure, should one occur.  If a false positive does occur, the wearer will still have 15 seconds to realize that the watch is buzzing and showing a "SEIZURE DETECTED" message.  Simply press the watch's middle button 3 times to cancel the alert, thereby preventing the text messages from being sent.
 
@@ -46,7 +60,7 @@ And lastly, there could be flaws in the design of the app, or bugs in the code i
 
 Despite this list of potential issues, we have been using the app for over a year and it has performed very well for us.  We hope that it does the same for you.
 
-<h4>INSTRUCTIONS</h4>
+#### Instructions
 
 So how do you get it working?  If you have read the list of potential issues, you agree to the disclaimer above, and you possess all of the listed requirements, you can get "Pebble Seizure Detect" working on your Pebble by following the steps below.  And don't worry, no knowledge of programming or code is needed to do this!  Just follow these steps carefully:
 
@@ -158,7 +172,7 @@ So how do you get it working?  If you have read the list of potential issues, yo
 	- You may also wish to simulate a seizure by making a strong "toothbrushing" type of motion with the watch, for 30 to 60 seconds.  It should indicate that a seizure has been detected.  You should practice disabling a detected seizure (so that you know how to disable it during a false positive) and you should also allow it to actually send the seizure detection message and ensure that the relevant phone numbers do indeed receive a text message with your Google Maps location link.
 
 
-<h4>OPTIONAL INSTRUCTIONS FOR PERSISTENT LOCATION TRACKING</h4>
+#### Optional Instructions for Persistent Location Tracking
 
 If you would like to enable the ability to transmit the wearer's location to a webserver even without the detection of a seizure, follow the instructions below.  Please note that you will need to be relatively web savvy and already have a running website in order for this to work:
 
@@ -177,7 +191,7 @@ If you would like to enable the ability to transmit the wearer's location to a w
 	<li>To test if the location is now being transmitted properly, navigate to the following URL: "http://yourwebserverdomainname.com/yourfolder/location/" but replace the "http://yourwebserverdomainname.com/yourfolder/" portion with the path to the directory in which  you uploaded the "postdir.php" file.  Browsing to the "location" subfolder will bring up a page that links you to the Google Maps location of the most recent GPS update.  Click the link to ensure that it is accurate.  If the Google Map is showing you the GPS coordinates 0,0 just wait one minute to give the app time to get a proper GPS reading from the phone and submit it.  Then visit the URL again and the correct coordinates should be shown.</li>
 </ul>
 
-<br /><h4>SUMMARY</h4>
+#### Summary
 
 That's about it!  If you have any troubles, or if you have feedback, you can contact me here: pebbleseizuredetect@braceyourselfgames.com
 
