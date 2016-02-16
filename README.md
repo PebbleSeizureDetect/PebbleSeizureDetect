@@ -187,8 +187,8 @@ If you would like to enable the ability to transmit the wearer's location to a w
 
 <br /><h4>SUMMARY</h4>
 
-That's about it!  If you have any troubles, or if you have feedback, you can contact me here: pebbleseizuredetect@braceyourselfgames.com
+That's about it!  If you have any troubles, please check out our FAQ:
 
-Alternatively, you can message me on Twitter: https://twitter.com/braceyourselfok
+* [https://github.com/PebbleSeizureDetect/PebbleSeizureDetect/blob/master/FAQ.md](https://github.com/PebbleSeizureDetect/PebbleSeizureDetect/blob/master/FAQ.md)
 
 I hope that "Pebble Seizure Detect" is helpful for you.  If you know of other people who may benefit from it, please spread the word.  Thank you!
