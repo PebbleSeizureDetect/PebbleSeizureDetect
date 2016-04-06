@@ -5,6 +5,13 @@
 My name is Ryan Clark, and I am an independent game developer.  My wife has epilepsy and an unexpected tonic-clonic seizure in 2014 prompted me to create "Pebble Seizure Detect".  She has been using the app successfully for a year now, so we've decided to release it as open source software in the hope that it will help you as much as it has helped our family.
 
 
+<h4>IMPORTANT NOTES</h4>
+
+Our seizure detection solution is not the only one currently available (though it was when I first created it for my wife!).  You may also wish to look into:
+- [Empatica Embrace](https://www.empatica.com/product-embrace) -- This device has not yet shipped as of this writing (we are still waiting for ours!) but it seems to have promise.  We hope it will function even better than Pebble Seizure Detect.
+- [OpenSeizureDetector](http://www.openseizuredetector.org.uk/) -- This is also software for a Pebble device, but it works only with Android devices.  It uses a different seizure detection algorithm than our Pebble Seizure Detect (it detects higher frequencies) so it may be more appropriate for your situation.
+
+
 <h4>FEATURES</h4>
 
 - Detection of tonic-clonic motions using a Butterworth bandpass filter
