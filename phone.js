@@ -12,9 +12,17 @@
 //
 //    A copy of the GNU General Public License can be found at http://www.gnu.org/licenses/
 
+// ADD YOUR PERSONAL DATA HERE:
+var wearerName = "NAME"; // the wearers name
+var notifyPhonenumber = "PHONENUMBER"; // the number to send messages to
+var twilioAccount = "SID"; // twilio account sid
+var twilioToken = "TOKEN"; // twilio token
+
 var locationOptions = { "timeout": 30000, "maximumAge": 60000, "enableHighAccuracy": true }; 
 var lastLatitude = 0;
 var lastLongitude = 0;
+
+
 
 function locationSuccess(pos)
 {
@@ -38,8 +46,8 @@ function send_text_message(messageBody, phoneNumber)
 	messageBody = "Body=" + messageBody + "+at+location:+http://maps.apple.com/?q=" + lastLatitude + "," + lastLongitude + "&From=%22%2B1[YOUR TWILIO PHONE NUMBER]%22&To=%22%2B1" + phoneNumber + "%22";
 	
 	var req = new XMLHttpRequest();
-	req.open("POST", "https://api.twilio.com/2010-04-01/Accounts/[YOUR_AccountSID]/SMS/Messages.json", true);
-	req.setRequestHeader("Authorization", "Basic [AccountSID:PrimaryAuthToken, Base64 encoded]");
+	req.open("POST", "https://api.twilio.com/2010-04-01/Accounts/" + twilioAccount + "/SMS/Messages.json", true);
+	req.setRequestHeader("Authorization", "Basic " + twilioToken);
 	req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	req.setRequestHeader("Content-length", messageBody.length);
 	req.setRequestHeader("Connection", "close");
@@ -102,13 +110,13 @@ Pebble.addEventListener("appmessage", function(e)
 	// Panic message?
 	if (e.payload["0"] == 1)
 	{
-		send_text_message("NAME+pushed+the+panic+button", "6045551234");
+		send_text_message(wearerName + "+pushed+the+panic+button", notifyPhonenumber);
 		//send_text_message("NAME+pushed+the+panic+button", "7785556789");
 	}
 	// Seizure message?
 	else if (e.payload["0"] == 2)
 	{
-		send_text_message("NAME+may+have+had+a+seizure", "6045551234");
+		send_text_message(wearerName + "+may+have+had+a+seizure", notifyPhonenumber);
 		//send_text_message("NAME+may+have+had+a+seizure", "7785556789");
 	}
 	// Location ping?
